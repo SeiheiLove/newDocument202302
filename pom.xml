@@ -25,8 +25,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <!-- 添加了该标签表示测试使用，无法注入对应的jar包注解 -->
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
     </dependencies>
 
     <build>
