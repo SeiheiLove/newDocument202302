@@ -83,7 +83,7 @@ public class TestMyBatis {
          * 第二个参数是sql语句中对应的参数（占位符）
          * */
         try {
-            User user = session.selectOne("com.atguigu.pojo.User.selectUserById", 1);
+            UserDTO user = session.selectOne("com.atguigu.pojo.User.selectUserById", 1);
             System.out.println(user);
         } catch (Exception e) {
             // TODO: handle exception
