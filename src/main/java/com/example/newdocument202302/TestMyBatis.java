@@ -39,6 +39,11 @@ public class TestMyBatis {
          * */
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcDB", "root", "root");
 
+        /**
+         * 设置事务管理自动提交
+         */
+        connection.setAutoCommit(true);
+
         //3.通过连接创建sql语句执行器对象
         //3.1  sql语句编写
         String sql = "select `id`,`name`,`author`,`price`,`sales`,`stock`,`publishing` from t_book";
@@ -57,6 +62,10 @@ public class TestMyBatis {
             System.out.println(book);
         }
         //5.最后一步：关闭结果集ResultSet,sql执行器Statement,connection连接，释放资源；
+        /**
+         * 事务回滚
+         */
+        connection.rollback();
         rs.close();
         statement.close();
         connection.close();
@@ -78,6 +87,13 @@ public class TestMyBatis {
         //通过sqlsessionfactory对象创建sqlsession对象
         //session相当于JDBC中的connection连接，每次使用完一定要关闭
         SqlSession session = sessionFactory.openSession();
+        /**
+         * 开启mybatis的事务自动提交
+         * 事务提交和事务回滚
+         */
+        SqlSession sqlSession = sessionFactory.openSession(true);
+        session.commit();
+        session.rollback();
         //selectOne是执行查询只返回一行记录的sql语句方法
         /*第一个参数是sql语句：sql语句是由名称空间namespace和id唯一标识组成
          * 第二个参数是sql语句中对应的参数（占位符）

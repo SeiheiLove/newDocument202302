@@ -1,13 +1,11 @@
 package com.example.newdocument202302;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.newdocument202302.dto.MyCallable;
 import com.example.newdocument202302.dto.MyThread;
 import com.example.newdocument202302.dto.MyThreadTwo;
 import com.example.newdocument202302.dto.UserDTO;
 import com.sun.org.apache.xpath.internal.operations.String;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import net.minidev.json.JSONObject;
-import org.apache.catalina.User;
 import org.junit.Test;
 
 import java.io.File;
@@ -89,6 +87,7 @@ public class TestString {
     /**
      * 多线程
      * 四种创建方式
+     * 继承Thread类，重写run()方法
      *
      */
     @Test
@@ -104,6 +103,7 @@ public class TestString {
 
     /**
      * 主线程和分线程是没有规定先后顺序执行的,可能分线程先执行
+     * 实现runnable接口，重写run()方法
      */
     @Test
     public void six(){
@@ -116,6 +116,11 @@ public class TestString {
         System.out.println("我是主线程001" + l1);
     }
 
+    /**
+     *
+     * 实现callable接口，重写call(),有返回值
+     *
+     */
     @Test
     public void serven(){
 
@@ -140,9 +145,9 @@ public class TestString {
     public void eight(){
         //创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
         ExecutorService executorService = Executors.newCachedThreadPool();
-        //创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
+        //创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。核心线程数和最大线程数相等
         ExecutorService executorService1 = Executors.newFixedThreadPool(8);
-        //创建一个定长线程池，支持定时及周期性任务执行。
+        //创建一个定长线程池，支持定时及周期性任务执行。 DelayedWorkQueue 任务队列，支持定时执行该队列中的任务
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(8);
         //创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行
         ExecutorService executorService2 = Executors.newSingleThreadExecutor();

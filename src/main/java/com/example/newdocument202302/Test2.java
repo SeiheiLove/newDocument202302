@@ -2,7 +2,6 @@ package com.example.newdocument202302;
 
 import com.example.newdocument202302.dto.Teacher;
 import com.example.newdocument202302.dto.UserDTO;
-import net.minidev.json.JSONObject;
 import org.junit.Test;
 
 public class Test2 {

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class TestObject {
+public class TestPaiXu {
 
     @Test
     public void one() {
